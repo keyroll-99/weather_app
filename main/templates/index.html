@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row col-md-6 offset-2 col-xs-12 mt-2 justify-content-md-center">
+    <form method="post" action=".">{% csrf_token %}
+        {{ form }}
+        <input type="submit" value="New City">
+    </form>
+</div>
+{% for city in weather %}
+<div class="row col-md-6 offset-2 col-xs-12 mt-2 justify-content-md-center">
+{{ city }}
+</div>
+
+{% endfor %}
+
+{% endblock %}
