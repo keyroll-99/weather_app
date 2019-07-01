@@ -1,0 +1,36 @@
+body{
+    background-image: url('/assets/img/bg2.jpg');
+    background-repeat: no-repeat;
+}
+
+.card{
+    background-color: #dddd;
+    width: 210px;
+}
+
+.card-title{
+    text-align: center;
+    font-size: 20px;
+    
+}
+.card-body{
+    border: red, 100px ,solid !important;
+    text-align: center;
+}
+.card-title > img{
+    width: 32px;
+    height: 32px;
+}
+form>input[type=text]{
+    width: 210px;
+}
+form > input[type=submit]{
+ width: 80px;   
+}
+form{
+    text-align: center;
+}
+form > label{
+    font: bold;
+    font-size: 26px;
+}

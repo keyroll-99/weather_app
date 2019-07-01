@@ -19,7 +19,8 @@ def index(request):
             weather_form = WatherForm
         else:
             city = weather_form['city'].value()
-            url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid=3be45b9713bec8b1e52ba427fdffb48b"
+
+            url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid=3be45b9713bec8b1e52ba427fdffb48b&units=metric".format(city)
             r = requests.get(url).json()
             weather_data = []
             if r['cod'] != '404':
@@ -28,7 +29,7 @@ def index(request):
                 des = r['weather'][0]['description']
                 icon = r['weather'][0]['icon']
                 city_weather = {
-                    'city': city.city,
+                    'city': city,
                     'temperature': temp,
                     'wind': wind,
                     'description': des,
@@ -37,6 +38,7 @@ def index(request):
                 weather_data = [city_weather]
             else:
                 weather_data.append("city doesn't exist in our database")
+
             context['weather'] = weather_data
 
     context['form'] = weather_form
@@ -65,5 +67,5 @@ def index(request):
                 else:
                     Weather.objects.filter(pk=city.pk).delete()
         context['weather'] = weather_data
-
+    print(context)
     return render(request, 'index.html', context)

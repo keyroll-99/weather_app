@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row col-md-6 offset-2 col-xs-12 mt-2 justify-content-md-center">
+<div class="row col-md-6 offset-md-2 offset-1 col-xs-12 mt-2 justify-content-md-center">
     <form method="post" action=".">{% csrf_token %}
-        {{ form }}
+        {{ form }}<br>
         <input type="submit" value="New City">
     </form>
 </div>
 {% for city in weather %}
 <div class="row col-md-6 offset-2 col-xs-12 mt-2 justify-content-md-center">
-{{ city }}
+    <div class="card">
+        <div class="card-title"><b>{{city.city}}</b><img src="http://openweathermap.org/img/wn/{{city.icon}}@2x.png"> </div>
+        <div class="card-body">
+            <p>Temperature: {{city.temperature}}<br>
+            Wind: {{city.wind}}<br>
+            Description: {{city.description}} </p>
+        </div>
+    </div>
+
 </div>
 
 {% endfor %}
