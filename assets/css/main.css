@@ -35,3 +35,18 @@ form > label{
     font: bold;
     font-size: 26px;
 }
+
+
+.center{
+    margin: 0 auto;
+    width: 80%;
+    
+}
+.center>.col-xs-12{
+    background: #dddd;
+    text-align: center
+}
+.center>.col-xs-12>a{
+    color: black;
+}
+

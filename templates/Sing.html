@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='row mt-2' >
+    <div class="center">
+          <div class="col-xs-12 col-sm-4 offset-sm-3">
+                <form method="post" action=".">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="{{f}}">
+                </form>
+              <br>
+              {% if f == 'sing up' %}
+                <a href="/singIn/">Sing In</a>
+              {% else %}
+                <a href="/singUp/">Sing Up</a>
+              {% endif %}
+          </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -67,5 +67,5 @@ def index(request):
                 else:
                     Weather.objects.filter(pk=city.pk).delete()
         context['weather'] = weather_data
-    print(context)
+    # print(context)
     return render(request, 'index.html', context)
