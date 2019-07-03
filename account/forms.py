@@ -8,8 +8,8 @@ class UserSingInForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
     def clean(self, *args, **kwargs):
-        username = self.cleaned_data.get['username']
-        password = self.cleaned_data.get['password']
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
 
         if username and password:
             user = authenticate(username=username, password=password)
@@ -20,8 +20,6 @@ class UserSingInForm(forms.Form):
         return super(UserSingInForm, self).clean(*args, **kwargs)
 
 class UserSingUpForm(forms.ModelForm):
-    email = forms.EmailField(label='Email Adress')
-    email1 = forms.EmailField(label='Confirm Email')
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
@@ -30,20 +28,13 @@ class UserSingUpForm(forms.ModelForm):
             'first_name',
             'last_name',
             'username',
-            'email',
-            'email1',
             'password',
         ]
+        help_text = {
+            'username': None
+        }
+
 
     def clean(self, *args, **kwargs):
-        email = self.cleaned_data.get('email')
-        email1 = self.cleaned_data.get('email1')
-
-        if email != email1:
-            raise forms.ValidationError('email must much')
-
-        email_qs = User.objects.filter(email=email)
-        if email_qs.exists():
-            raise forms.ValidationError('This email is already being used')
 
         return super(UserSingUpForm, self).clean(*args, **kwargs)

@@ -13,8 +13,9 @@ def sing_in(request):
     form = UserSingInForm(request.POST or None)
 
     if form.is_valid():
-        username = form.cleaned_data.get['username']
-        password = form.cleaned_data.get['password']
+
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
 
         user = authenticate(username=username, password=password)
 
@@ -33,14 +34,15 @@ def sing_up(request):
 
     if form.is_valid():
         user = form.save(commit=False)
-        password = form.cleaned_data.get['password']
-        user.set_password = password
-        user.sava()
-        new_user = authenticate(username=user.usernaem, password=password)
+        password = form.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
+        new_user = authenticate(username=user.username, password=password)
+        login(request, new_user)
 
         return redirect('/')
 
-    context= {
+    context = {
         'form': form,
         'f': 'sing up'
     }

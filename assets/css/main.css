@@ -44,9 +44,14 @@ form > label{
 }
 .center>.col-xs-12{
     background: #dddd;
-    text-align: center
+    text-align: center;
+    width: 100%;
 }
 .center>.col-xs-12>a{
     color: black;
 }
+.center>.col-xs-12>form{
+    text-align: center;
+}
+
 

@@ -66,6 +66,9 @@ def index(request):
                     weather_data.append(city_weather)
                 else:
                     Weather.objects.filter(pk=city.pk).delete()
-        context['weather'] = weather_data
+        try:
+            context['weather'] = weather_data
+        except:
+            context['wather'] = []
     # print(context)
     return render(request, 'index.html', context)
