@@ -6,6 +6,6 @@ Dodatkowo jeśli urzytkownik się zaloguje może zapisywać sobie miasta więc n
 
 żeby odpalić aplikację trzeba wykonac następujace komendy
 
-pip3 install django
-pip3 install requests
-python3 manage.py migrate
+1. ```pip3 install django```
+2. ```pip3 install requests```
+3. ```python3 manage.py migrate```
